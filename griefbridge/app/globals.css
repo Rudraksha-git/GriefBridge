@@ -10,3 +10,172 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Fade up — default entrance */
+  .anim-fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .anim-fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fade in — pure opacity, no movement */
+  .anim-fade {
+    opacity: 0;
+    transition: opacity 900ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .anim-fade.in-view {
+    opacity: 1;
+  }
+
+  /* Fade left — slides in from right */
+  .anim-fade-left {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .anim-fade-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Fade right — slides in from left */
+  .anim-fade-right {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 700ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .anim-fade-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Scale in — for the bridge center dot */
+  .anim-scale {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .anim-scale.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Line draw — for the bridge track */
+  .anim-line {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .anim-line.in-view {
+    transform: scaleX(1);
+  }
+
+  /* Stagger delays — add these to children */
+  .delay-100 { transition-delay: 100ms; }
+  .delay-150 { transition-delay: 150ms; }
+  .delay-200 { transition-delay: 200ms; }
+  .delay-300 { transition-delay: 300ms; }
+  .delay-400 { transition-delay: 400ms; }
+  .delay-450 { transition-delay: 450ms; }
+  .delay-500 { transition-delay: 500ms; }
+  .delay-600 { transition-delay: 600ms; }
+  .delay-800 { transition-delay: 800ms; }
+  .delay-1000 { transition-delay: 1000ms; }
+
+}
+
+/* Fallback: show everything instantly if reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-fade, .anim-fade-left,
+  .anim-fade-right, .anim-scale, .anim-line {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.btn-primary {
+  transition: background-color 300ms ease, transform 150ms ease, box-shadow 300ms ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.btn-ghost {
+  transition: background-color 300ms ease, border-color 300ms ease, transform 150ms ease;
+}
+.btn-ghost:hover {
+  transform: translateY(-1px);
+}
+.btn-ghost:active {
+  transform: scale(0.98);
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #534AB7;
+  transition: width 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.task-row {
+  transition: background-color 200ms ease, padding-left 200ms ease;
+}
+.task-row:hover {
+  background-color: #F8F7F4;
+  padding-left: 8px;
+}
+
+.badge-attention {
+  animation: attentionPulse 2.5s ease-in-out infinite;
+}
+
+.memory-card {
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 300ms ease;
+}
+.memory-card:hover {
+  transform: translateY(-2px);
+}
+
+.chat-message {
+  animation: messageIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.chat-input {
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+  border: 1px solid #D3D1C7;
+}
+.chat-input:focus {
+  border-color: #7F77DD;
+  box-shadow: 0 0 0 3px rgba(127, 119, 221, 0.12);
+  outline: none;
+}
+
+.agent-filled {
+  animation: highlightFade 1.5s 0.8s ease-out both;
+}

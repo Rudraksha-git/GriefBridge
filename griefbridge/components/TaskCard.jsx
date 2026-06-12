@@ -1,4 +1,5 @@
-import { Briefcase, Building2, Landmark, Mail, Globe, Shield } from "lucide-react";
+import { Briefcase, Building2, Landmark, Mail, Globe, Shield, CheckCircle2 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const getCategoryIcon = (category) => {
   switch (category) {
@@ -13,23 +14,40 @@ const getCategoryIcon = (category) => {
   }
 };
 
-const getStatusBadge = (status) => {
-  switch (status) {
-    case 'completed': return <span className="bg-memory-50 text-memory-600 text-[11px] font-medium px-2 py-0.5 rounded uppercase tracking-wider">Done</span>;
-    case 'in_progress': return <span className="bg-brand-50 text-brand-600 text-[11px] font-medium px-2 py-0.5 rounded uppercase tracking-wider">In progress</span>;
-    case 'needs_attention': return <span className="bg-amber-50 text-amber-700 text-[11px] font-medium px-2 py-0.5 rounded uppercase tracking-wider">Needs you</span>;
-    case 'pending_approval': return <span className="bg-brand-50 text-brand-600 text-[11px] font-medium px-2 py-0.5 rounded uppercase tracking-wider">Needs you</span>;
-    case 'pending': 
-    case 'queued': return <span className="bg-stone-100 text-stone-500 text-[11px] font-medium px-2 py-0.5 rounded uppercase tracking-wider">Queued</span>;
-    default: return null;
-  }
-};
-
 export default function TaskCard({ task, onApprove }) {
+  const [justApproved, setJustApproved] = useState(false);
+  const [prevStatus, setPrevStatus] = useState(task.status);
+
+  useEffect(() => {
+    if (prevStatus === 'needs_attention' && task.status === 'in_progress') {
+      setJustApproved(true);
+      setTimeout(() => setJustApproved(false), 3000);
+    }
+    setPrevStatus(task.status);
+  }, [task.status, prevStatus]);
+
   const needsReview = task.status === 'needs_attention' || task.status === 'pending_approval';
 
+  let badgeClasses = "text-[11px] font-medium px-2 py-0.5 rounded uppercase tracking-wider transition-all duration-400 ease-in-out ";
+  let badgeText = "";
+
+  switch (task.status) {
+    case 'completed': 
+      badgeClasses += "bg-memory-50 text-memory-600"; badgeText = "Done"; break;
+    case 'in_progress': 
+      badgeClasses += "bg-brand-50 text-brand-600"; badgeText = "In progress"; break;
+    case 'needs_attention': 
+    case 'pending_approval':
+      badgeClasses += "bg-amber-50 text-amber-700 badge-attention"; badgeText = "Needs you"; break;
+    case 'pending': 
+    case 'queued': 
+      badgeClasses += "bg-stone-100 text-stone-500"; badgeText = "Queued"; break;
+    default: 
+      badgeClasses += "bg-stone-100 text-stone-500"; badgeText = task.status;
+  }
+
   return (
-    <div className="py-4 border-b border-stone-100 flex items-start gap-4">
+    <div className="task-row anim-fade-up py-4 border-b border-stone-100 flex items-start gap-4">
       <div className="text-stone-300 mt-0.5 group-hover:text-brand-400 transition-colors">
         {getCategoryIcon(task.category)}
       </div>
@@ -39,16 +57,22 @@ export default function TaskCard({ task, onApprove }) {
         <p className="text-xs text-stone-400">{task.description}</p>
       </div>
 
-      <div className="flex flex-col items-end gap-2 shrink-0">
-        {getStatusBadge(task.status)}
-        {needsReview && onApprove && (
+      <div className="flex flex-col items-end gap-2 shrink-0 relative min-h-[50px] min-w-[100px]">
+        <span className={badgeClasses}>{badgeText}</span>
+        
+        <div className="relative w-full flex justify-end">
           <button 
-            onClick={() => onApprove(task)}
-            className="text-[11px] font-medium px-3 py-1 rounded border border-brand-200 text-brand-600 hover:bg-brand-50 transition-colors"
+            onClick={() => needsReview && onApprove && onApprove(task)}
+            className={`absolute right-0 text-[11px] font-medium px-3 py-1 rounded border border-brand-200 text-brand-600 hover:bg-brand-50 transition-all duration-300 ease-in-out
+              ${needsReview ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
           >
             Review &rarr;
           </button>
-        )}
+          
+          <div className={`absolute right-1 top-1 text-brand-500 transition-all duration-500 delay-300 ${justApproved ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
+            <CheckCircle2 size={18} />
+          </div>
+        </div>
       </div>
     </div>
   );
