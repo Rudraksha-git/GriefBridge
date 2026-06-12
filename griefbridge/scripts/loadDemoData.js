@@ -1,4 +1,6 @@
 import prisma from "../lib/prisma.js";
+import fs from "fs";
+import path from "path";
 
 async function main() {
   console.log("Starting database seeding...");
@@ -9,6 +11,13 @@ async function main() {
   await prisma.memory.deleteMany({});
   await prisma.task.deleteMany({});
   await prisma.user.deleteMany({});
+
+  // Clear local notifications registry
+  const notificationsFilePath = path.join(process.cwd(), "data", "notifications.json");
+  if (fs.existsSync(notificationsFilePath)) {
+    fs.writeFileSync(notificationsFilePath, JSON.stringify([], null, 2), "utf8");
+    console.log("Cleared notifications registry file.");
+  }
 
   // 2. Create the demo user
   const demoUserId = "user_demo";
@@ -64,6 +73,86 @@ async function main() {
     {
       title: "Cancel Netflix and Spotify accounts",
       description: "Close digital accounts associated with dad's email to stop recurring charges.",
+      status: "PENDING",
+      priority: "LOW",
+      category: "digital",
+      userId: demoUserId
+    },
+    {
+      title: "Update Property Mutation for Sector 15 House",
+      description: "Submit property mutation request to Chandigarh Revenue Office for House 102, Sector 15-A.",
+      status: "PENDING",
+      priority: "HIGH",
+      category: "legal",
+      dueDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000),
+      userId: demoUserId
+    },
+    {
+      title: "Transfer Family Pension to Savitri Devi",
+      description: "Apply for family pension transition at Central Pension Accounting Office under PPO-7890123-CHD.",
+      status: "PENDING",
+      priority: "HIGH",
+      category: "financial",
+      dueDate: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000),
+      userId: demoUserId
+    },
+    {
+      title: "Transfer Electricity Connection to Savitri Devi",
+      description: "Request transfer of Electricity connection ELEC-CHD-94921 to next of kin Savitri Devi.",
+      status: "PENDING",
+      priority: "MEDIUM",
+      category: "utility",
+      dueDate: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
+      userId: demoUserId
+    },
+    {
+      title: "Notify Dad's Employer TCS about Demise",
+      description: "Notify HR department of Tata Consultancy Services (TCS) under Employee ID EMP-TCS-889102 for settlement.",
+      status: "PENDING",
+      priority: "MEDIUM",
+      category: "financial",
+      dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+      userId: demoUserId
+    },
+    {
+      title: "Submit final ITR tax return for Deceased",
+      description: "Prepare and submit the final income tax return for the financial year of demise.",
+      status: "PENDING",
+      priority: "MEDIUM",
+      category: "financial",
+      dueDate: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
+      userId: demoUserId
+    },
+    {
+      title: "Notify EPFO of Demise and request PF settlement",
+      description: "Apply for provident fund settlement and withdrawal benefits at regional EPFO Chandigarh.",
+      status: "PENDING",
+      priority: "MEDIUM",
+      category: "financial",
+      dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+      userId: demoUserId
+    },
+    {
+      title: "Close Dad's PNB Savings Account",
+      description: "Notify Punjab National Bank Sector 17 branch about demise and request closure.",
+      status: "PENDING",
+      priority: "MEDIUM",
+      category: "financial",
+      dueDate: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000),
+      userId: demoUserId
+    },
+    {
+      title: "Terminate Airtel postpaid mobile connection",
+      description: "Request termination of postpaid number to prevent monthly subscription billing.",
+      status: "PENDING",
+      priority: "LOW",
+      category: "utility",
+      dueDate: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
+      userId: demoUserId
+    },
+    {
+      title: "Request deactivation of Dad's Facebook account",
+      description: "Request memorialization or deactivation of facebook account to prevent unauthorized access.",
       status: "PENDING",
       priority: "LOW",
       category: "digital",
