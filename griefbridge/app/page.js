@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { Briefcase, Brain, CheckCircle2, Heart, Shield, HeartHandshake, Clock } from "lucide-react";
 import BridgeHero from "../components/BridgeHero";
@@ -32,9 +31,13 @@ export default function LandingPage() {
         </Link>
       </nav>
 
-      <BridgeHero progress={progress} />
+      <div className="relative w-full" style={{ height: "150vh" }}>
+        <div className="sticky top-0 w-full h-screen overflow-hidden">
+          <BridgeHero progress={progress} />
+        </div>
+      </div>
 
-      <section className="bg-white py-20 border-y border-stone-100">
+      <section className="relative z-10 bg-white py-20 border-y border-stone-100">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-stone-400 mb-8 anim-fade-up">
             The problem
@@ -50,7 +53,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="relative z-10 bg-stone-50 py-20">
         <div className="max-w-5xl mx-auto px-6">
           <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-stone-400 mb-12 text-center anim-fade-up">
             Two agents, one mission
@@ -87,7 +90,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 border-t border-stone-100">
+      <section className="relative z-10 bg-white py-20 border-t border-stone-100">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-stone-400 mb-12 text-center anim-fade-up">
             How it works
@@ -113,7 +116,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-stone-50">
+      <section className="relative z-10 py-20 bg-stone-50">
         <div className="max-w-4xl mx-auto px-6">
           <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-stone-400 mb-12 text-center anim-fade-up">
             Memory vault — a glimpse
@@ -139,7 +142,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white border-t border-stone-100">
+      <section className="relative z-10 py-20 bg-white border-t border-stone-100">
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
             { icon: Shield, title: "Private by design", desc: "Your data never trains public models. Complete ownership and deletion rights." },
@@ -157,7 +160,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="py-10 border-t border-stone-200 bg-stone-50 text-center">
+      <footer className="relative z-10 py-10 border-t border-stone-200 bg-stone-50 text-center">
         <div className="font-serif text-lg text-stone-800 mb-2">
           Grief<span className="text-brand-400">Bridge</span>
         </div>
