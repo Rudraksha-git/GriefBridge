@@ -1,0 +1,38 @@
+To,
+The Tahsildar / Revenue Authority,
+{{revenueOfficeName}}
+{{revenueOfficeAddress}}
+
+Subject: Application for Issuance of Legal Heir Certificate for the Deceased: {{deceasedName}}
+
+Respected Sir/Madam,
+
+I am writing to apply for a Legal Heir Certificate in respect of the deceased {{deceasedName}}, who passed away on {{dateOfDeath}} at {{placeOfDeath}}. At the time of passing, the deceased was residing at {{deceasedAddress}}.
+
+The deceased is survived by the following legal heirs:
+{{#each legalHeirs}}
+- Name: {{this.name}}, Age: {{this.age}}, Relationship: {{this.relationship}}, Occupation: {{this.occupation}}
+{{/each}}
+
+There are no other surviving legal heirs besides the persons listed above.
+
+We require the Legal Heir Certificate for the purpose of transferring the properties, bank accounts, pensions, and other assets left by the deceased.
+
+I have enclosed the following supporting documents for your verification:
+1. Death Certificate of the deceased (Certificate No: {{deathCertificateNo}})
+2. Proof of Residence of the deceased
+3. Identity proofs (Aadhaar/PAN) of all surviving legal heirs
+4. Affidavit/Self-declaration signed by all legal heirs
+
+I request you to kindly direct the field inspection officer to conduct the verification and issue the Legal Heir Certificate at your earliest convenience.
+
+Thank you.
+
+Yours faithfully,
+
+____________________________
+{{claimantName}}
+(On behalf of all surviving legal heirs)
+Address: {{claimantAddress}}
+Phone: {{claimantPhone}}
+Date: {{currentDate}}
