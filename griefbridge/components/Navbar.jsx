@@ -30,9 +30,9 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`group flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ease-out ${
+                    className={`nav-link group flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ease-out ${
                       isActive
-                        ? "bg-brand-50 text-brand-700 shadow-sm ring-1 ring-brand-100/50"
+                        ? "active bg-brand-50 text-brand-700 shadow-sm ring-1 ring-brand-100/50"
                         : "text-stone-500 hover:bg-white/80 hover:text-stone-800 hover:shadow-sm hover:ring-1 hover:ring-stone-200/50"
                     }`}
                   >

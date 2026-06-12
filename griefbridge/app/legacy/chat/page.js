@@ -7,11 +7,13 @@ import { useState } from "react";
 
 export default function ChatPage() {
   const [messages, setMessages] = useState(mockMessages);
+  const [isTyping, setIsTyping] = useState(false);
 
   const handleSend = (text) => {
     // Add user message
     const newUserMsg = { role: 'user', content: text, timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) };
     setMessages(prev => [...prev, newUserMsg]);
+    setIsTyping(true);
 
     // Simulate agent response
     setTimeout(() => {
@@ -22,6 +24,7 @@ export default function ChatPage() {
         timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
       };
       setMessages(prev => [...prev, newAgentMsg]);
+      setIsTyping(false);
     }, 1500);
   };
 
@@ -78,7 +81,7 @@ export default function ChatPage() {
 
       {/* Chat Area */}
       <div className="md:col-span-3 h-screen">
-        <CompanionChat messages={messages} onSend={handleSend} />
+        <CompanionChat messages={messages} onSend={handleSend} isTyping={isTyping} />
       </div>
     </div>
   );

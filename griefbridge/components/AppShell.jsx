@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
+import { PageTransition } from "./PageTransition";
 
 export default function AppShell({ children }) {
   const pathname = usePathname();
@@ -9,14 +10,14 @@ export default function AppShell({ children }) {
   const isChatPage = pathname === "/legacy/chat";
 
   if (isLandingPage || isChatPage) {
-    return <>{children}</>;
+    return <PageTransition>{children}</PageTransition>;
   }
 
   return (
     <div className="flex flex-col min-h-screen bg-stone-50/50">
       <Navbar />
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {children}
+        <PageTransition>{children}</PageTransition>
       </main>
     </div>
   );

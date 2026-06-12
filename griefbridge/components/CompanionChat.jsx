@@ -2,8 +2,9 @@
 
 import { ArrowUp } from "lucide-react";
 import { useState } from "react";
+import TypingIndicator from "./TypingIndicator";
 
-export default function CompanionChat({ messages, onSend }) {
+export default function CompanionChat({ messages, onSend, isTyping }) {
   const [input, setInput] = useState("");
   const hasMessages = messages.length > 0;
 
@@ -36,27 +37,37 @@ export default function CompanionChat({ messages, onSend }) {
               </p>
             </div>
           ) : (
-            messages.map((msg, i) => (
-              <div 
-                key={i} 
-                className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
-              >
+            <>
+              {messages.map((msg, i) => (
                 <div 
-                  className={`text-sm px-4 py-3 max-w-[85%] sm:max-w-[75%] ${
-                    msg.role === 'user' 
-                      ? 'bg-brand-600 text-white rounded-2xl rounded-br-sm' 
-                      : 'bg-white border border-stone-100 text-stone-700 rounded-2xl rounded-bl-sm shadow-sm'
-                  }`}
+                  key={i} 
+                  className={`chat-message flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
                 >
-                  <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                  <div 
+                    className={`text-sm px-4 py-3 max-w-[85%] sm:max-w-[75%] ${
+                      msg.role === 'user' 
+                        ? 'bg-brand-600 text-white rounded-2xl rounded-br-sm' 
+                        : 'bg-white border border-stone-100 text-stone-700 rounded-2xl rounded-bl-sm shadow-sm'
+                    }`}
+                  >
+                    <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                  </div>
+                  {msg.role === 'agent' && msg.source && (
+                    <span 
+                      className="text-[11px] text-stone-400 mt-1.5 px-2 block"
+                      style={{ animation: 'fadeInUp 0.4s 0.3s both' }}
+                    >
+                      — {msg.source}
+                    </span>
+                  )}
                 </div>
-                {msg.role === 'agent' && msg.source && (
-                  <span className="text-[11px] text-stone-400 mt-1.5 px-2 block">
-                    — {msg.source}
-                  </span>
-                )}
-              </div>
-            ))
+              ))}
+              {isTyping && (
+                <div className="flex flex-col items-start chat-message">
+                  <TypingIndicator />
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -72,7 +83,7 @@ export default function CompanionChat({ messages, onSend }) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Robert something..."
-              className="w-full bg-stone-50 border border-stone-100 rounded-2xl pl-4 pr-12 py-3 text-sm text-stone-700 focus:outline-none focus:border-brand-300 focus:ring-1 focus:ring-brand-300 resize-none min-h-[44px]"
+              className="chat-input w-full bg-stone-50 border border-stone-100 rounded-2xl pl-4 pr-12 py-3 text-sm text-stone-700 focus:outline-none focus:border-brand-300 focus:ring-1 focus:ring-brand-300 resize-none min-h-[44px]"
               rows={1}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
@@ -84,7 +95,7 @@ export default function CompanionChat({ messages, onSend }) {
             <button 
               type="submit"
               disabled={!input.trim()}
-              className="absolute right-2 bottom-2 w-[36px] h-[36px] rounded-full bg-brand-600 text-white flex items-center justify-center hover:bg-brand-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-primary absolute right-2 bottom-2 w-[36px] h-[36px] rounded-full bg-brand-600 text-white flex items-center justify-center hover:bg-brand-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ArrowUp size={18} />
             </button>

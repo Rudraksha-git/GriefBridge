@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TaskCard from "../../components/TaskCard";
 import ApprovalModal from "../../components/ApprovalModal";
 import { mockTasks } from "../../lib/mockData";
@@ -11,6 +11,21 @@ export default function Dashboard() {
   const [selectedTask, setSelectedTask] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showCompleted, setShowCompleted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const header = document.getElementById('dashboard-header');
+      if (header) header.classList.add('in-view');
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const rows = document.querySelectorAll('.task-row');
+    rows.forEach((row, i) => {
+      setTimeout(() => row.classList.add('in-view'), 80 + i * 60);
+    });
+  }, [tasks]);
 
   const handleApprove = (task) => {
     setSelectedTask(task);
@@ -40,7 +55,7 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-2xl mx-auto py-12">
-      <div className="mb-12">
+      <div id="dashboard-header" className="anim-fade-up mb-12">
         <p className="text-[11px] font-medium tracking-[0.1em] uppercase text-stone-400 mb-3">
           Executor agent
         </p>
@@ -56,7 +71,7 @@ export default function Dashboard() {
       {needsAttentionTasks.length > 0 && (
         <div className="mb-8 space-y-4">
           {needsAttentionTasks.map(task => (
-            <div key={task.id} className="bg-amber-50 border-l-[3px] border-amber-400 p-5 rounded-r-xl">
+            <div key={task.id} className="task-row anim-fade-up bg-amber-50 border-l-[3px] border-amber-400 p-5 rounded-r-xl">
               <div className="flex justify-between items-start gap-4">
                 <div>
                   <h3 className="text-sm font-medium text-stone-800 mb-1">{task.title}</h3>
@@ -93,7 +108,7 @@ export default function Dashboard() {
           {showCompleted && (
             <div className="mt-4 flex flex-col space-y-1">
               {completedTasks.map(task => (
-                <div key={task.id} className="py-3 flex items-center gap-3 opacity-70">
+                <div key={task.id} className="task-row anim-fade-up py-3 flex items-center gap-3 opacity-70">
                   <CheckCircle2 size={16} className="text-stone-400" />
                   <span className="text-sm text-stone-500">{task.title}</span>
                 </div>

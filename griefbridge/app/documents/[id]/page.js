@@ -27,11 +27,11 @@ export default function DocumentReview({ params }) {
               <p>To Whom It May Concern,</p>
               <p>
                 I am writing to formally request the closure of the account associated with the late 
-                <span className="bg-brand-50 px-1 mx-1 rounded text-brand-800">Robert Kumar</span>, 
-                who passed away on <span className="bg-brand-50 px-1 mx-1 rounded text-brand-800">January 10, 2025</span>.
+                <span className="bg-brand-50 agent-filled px-1 mx-1 rounded text-brand-800">Robert Kumar</span>, 
+                who passed away on <span className="bg-brand-50 agent-filled px-1 mx-1 rounded text-brand-800">January 10, 2025</span>.
               </p>
               <p>
-                The account number in question is <span className="bg-brand-50 px-1 mx-1 rounded text-brand-800">4821 0092 1102</span>.
+                The account number in question is <span className="bg-brand-50 agent-filled px-1 mx-1 rounded text-brand-800">4821 0092 1102</span>.
               </p>
               <p>
                 Please find the required documentation attached, including the death certificate. Kindly advise on the next steps to process the account closure and transfer any remaining balance to the designated executor account.
