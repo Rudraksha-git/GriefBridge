@@ -1,20 +1,14 @@
 import { ClerkProvider } from "@clerk/nextjs";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lora, Inter } from "next/font/google";
 import "./globals.css";
+import AppShell from "../components/AppShell";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const lora = Lora({ subsets: ['latin'], variable: '--font-lora', style: ['normal', 'italic'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata = {
-  title: "GriefBridge - Legacy & Bereavement Support",
-  description: "AI-powered Legacy & Bereavement Support System",
+  title: "GriefBridge",
+  description: "Autonomous multi-agent AI system that helps families after a death",
 };
 
 export default function RootLayout({ children }) {
@@ -22,9 +16,11 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html
         lang="en"
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+        className={`${lora.variable} ${inter.variable} antialiased h-full`}
       >
-        <body className="min-h-full flex flex-col">{children}</body>
+        <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)] text-sm text-stone-600 leading-relaxed">
+          <AppShell>{children}</AppShell>
+        </body>
       </html>
     </ClerkProvider>
   );
