@@ -7,15 +7,17 @@ generator client {
 }
 
 model User {
-  id        String     @id // Clerk user ID
-  email     String     @unique
-  firstName String?
-  lastName  String?
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  tasks     Task[]
-  documents Document[]
-  memories  Memory[]
+  id           String     @id // Clerk user ID
+  email        String     @unique
+  firstName    String?
+  lastName     String?
+  deceasedName String?
+  relationship String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  tasks        Task[]
+  documents    Document[]
+  memories     Memory[]
 }
 
 model Task {
@@ -49,13 +51,15 @@ model Document {
 }
 
 model Memory {
-  id        String   @id @default(uuid())
-  type      String   // voice, chat, photo, text
-  content   String   // Text transcript or note
-  metadata  Json?    // EXIF, speaker tags, timestamps, etc.
-  fileUrl   String?  // S3 or local url
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(uuid())
+  type       String   // voice, chat, photo, text
+  content    String   // Text transcript or note
+  embedding  Float[]  // Vector embedding of the content
+  metadata   Json?    // EXIF, speaker tags, timestamps, etc.
+  fileUrl    String?  // S3 or local url
+  sourceFile String?
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }

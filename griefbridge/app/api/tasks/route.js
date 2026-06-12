@@ -1,6 +1,7 @@
 import { getUserId } from "../../../lib/auth.js";
 import prisma from "../../../lib/prisma.js";
 import { NextResponse } from "next/server.js";
+import { ensureUserAndSeed } from "../../../lib/seedHelper.js";
 
 const priorityWeight = {
   "HIGH": 3,
@@ -11,6 +12,9 @@ const priorityWeight = {
 export async function GET(request) {
   try {
     const userId = await getUserId();
+    
+    // Auto-create and seed user profile on demand
+    await ensureUserAndSeed(userId);
 
     const tasks = await prisma.task.findMany({
       where: { userId },
@@ -36,7 +40,18 @@ export async function GET(request) {
       return 0;
     });
 
-    return NextResponse.json({ tasks });
+    const user = await prisma.user.findUnique({
+      where: { id: userId }
+    });
+
+    return NextResponse.json({ 
+      tasks,
+      user: {
+        deceasedName: user?.deceasedName || null,
+        relationship: user?.relationship || null,
+        userFullName: user ? `${user.firstName || ""} ${user.lastName || ""}`.trim() : ""
+      }
+    });
   } catch (error) {
     console.error("GET /api/tasks error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -1,5 +1,5 @@
 import { pipeline } from '@xenova/transformers';
-import { prisma } from '../lib/prisma';
+import prisma from '../lib/prisma.js';
 
 let embedderPromise = null;
 

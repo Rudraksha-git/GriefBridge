@@ -1,5 +1,7 @@
 import { pipeline } from '@xenova/transformers';
-import wavefile from 'wavefile';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const { WaveFile } = require('wavefile');
 import fs from 'fs';
 
 let transcriberPromise = null;
@@ -52,7 +54,7 @@ export async function transcribeAudio(filePath) {
  */
 function readAudioAsFloat32(filePath) {
   const buffer = fs.readFileSync(filePath);
-  const wav = new wavefile.WaveFile(buffer);
+  const wav = new WaveFile(buffer);
 
   wav.toBitDepth('32f');
   wav.toSampleRate(16000);

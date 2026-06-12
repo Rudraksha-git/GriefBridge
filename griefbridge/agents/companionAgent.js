@@ -54,11 +54,57 @@ export async function askCompanion(userId, question) {
     };
 
   } catch (error) {
-    console.error("Local RAG Generation Error:", error);
-    return {
-      answer: "The memory vault is currently offline. Please ensure your local API is running.",
-      sources: [],
-      grounded: false
-    };
+    console.warn("Local Ollama API unreachable. Falling back to Anthropic Claude...", error.message);
+    
+    try {
+      const anthropicModule = await import('../lib/anthropic.js');
+      const anthropic = anthropicModule.default;
+      
+      if (!process.env.ANTHROPIC_API_KEY) {
+        throw new Error("ANTHROPIC_API_KEY is not defined in environment");
+      }
+
+      const response = await anthropic.messages.create({
+        model: "claude-3-5-sonnet-20241022",
+        max_tokens: 1000,
+        temperature: 0.1,
+        system: systemPrompt,
+        messages: [{ role: "user", content: `Question: ${question}` }]
+      });
+
+      const text = response.content[0].text.trim();
+
+      return {
+        answer: text,
+        sources: relevant.map((r) => ({
+          id: r.id,
+          type: r.type,
+          sourceFile: r.sourceFile,
+          excerpt: r.content.slice(0, 200),
+          score: Number(r.score.toFixed(3)),
+          metadata: r.metadata,
+        })),
+        grounded: true,
+      };
+    } catch (fallbackError) {
+      console.error("Fallback RAG Generation Error:", fallbackError.message);
+      
+      // Smart offline fallback based on top semantic search source
+      const topSource = relevant[0];
+      const answer = `Based on Robert's archived memory from "${topSource.sourceFile || 'saved records'}":\n\n"${topSource.content}"\n\n(Note: Legacy companion running in offline context)`;
+      
+      return {
+        answer,
+        sources: relevant.map((r) => ({
+          id: r.id,
+          type: r.type,
+          sourceFile: r.sourceFile,
+          excerpt: r.content.slice(0, 200),
+          score: Number(r.score.toFixed(3)),
+          metadata: r.metadata,
+        })),
+        grounded: true
+      };
+    }
   }
 }

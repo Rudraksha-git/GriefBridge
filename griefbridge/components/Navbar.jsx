@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutDashboard, FileText, Bell, BookHeart } from "lucide-react";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 const navItems = [
   { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
@@ -45,18 +46,43 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-3 px-2 py-1.5 rounded-full bg-white/60 border border-stone-200/60 shadow-sm hover:bg-white hover:shadow transition-all duration-300 cursor-pointer group">
-              <div className="flex flex-col items-end hidden sm:flex pl-2">
-                <span className="text-sm font-medium text-stone-800 leading-tight">Robert Kumar</span>
-                <span className="text-[10px] text-stone-500 font-medium uppercase tracking-wider">Family access</span>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-100 to-brand-50 text-brand-700 flex items-center justify-center text-xs font-semibold shadow-inner ring-1 ring-white group-hover:scale-105 transition-transform">
-                RK
-              </div>
-            </div>
+            <AuthBadge />
           </div>
         </div>
       </div>
     </header>
+  );
+}
+
+function AuthBadge() {
+  const { isSignedIn, user } = useUser();
+
+  if (!isSignedIn) {
+    return (
+      <div className="flex gap-2">
+        <Link href="/sign-in" className="text-xs font-semibold px-4 py-2 rounded-full border border-stone-200 text-stone-600 hover:bg-stone-50 transition-colors">
+          Sign In
+        </Link>
+        <Link href="/sign-up" className="text-xs font-semibold px-4 py-2 rounded-full bg-stone-900 text-white hover:bg-stone-800 transition-colors">
+          Sign Up
+        </Link>
+      </div>
+    );
+  }
+
+  const name = user.firstName && user.lastName 
+    ? `${user.firstName} ${user.lastName}` 
+    : user.firstName || user.username || user.emailAddresses[0]?.emailAddress?.split("@")[0] || "Family Account";
+
+  return (
+    <div className="flex items-center gap-3 px-2 py-1 rounded-full bg-white/60 border border-stone-200/60 shadow-sm hover:bg-white transition-all duration-300 group">
+      <div className="flex flex-col items-end hidden sm:flex pl-2">
+        <span className="text-xs font-medium text-stone-800 leading-tight">{name}</span>
+        <span className="text-[9px] text-stone-400 font-bold uppercase tracking-wider">Family access</span>
+      </div>
+      <div className="w-8 h-8 rounded-full flex items-center justify-center shadow-inner overflow-hidden">
+        <UserButton afterSignOutUrl="/" />
+      </div>
+    </div>
   );
 }

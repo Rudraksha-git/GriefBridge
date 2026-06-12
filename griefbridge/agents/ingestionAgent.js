@@ -1,8 +1,9 @@
 import fs from 'fs';
-import { parseChatExport, groupIntoChunks } from '../tools/chatParser';
-import { processImage } from '../tools/imageTools';
-import { processAudio } from '../tools/audioTools';
-import { chunkText, storeMemories } from '../tools/memoryTools';
+import { parseChatExport, groupIntoChunks } from '../tools/chatParser.js';
+import { processImage } from '../tools/imageTools.js';
+import { processAudio } from '../tools/audioTools.js';
+import { chunkText, storeMemories } from '../tools/memoryTools.js';
+import { PDFParse } from 'pdf-parse';
 
 /**
  * Main entry point: given a batch of uploaded files (with type info),
@@ -26,6 +27,7 @@ export async function runIngestion({ userId, files }) {
       if (file.kind === 'chat') stored = await ingestChat(userId, file);
       else if (file.kind === 'image') stored = await ingestImage(userId, file);
       else if (file.kind === 'audio') stored = await ingestAudio(userId, file);
+      else if (file.kind === 'document') stored = await ingestDocument(userId, file);
       else throw new Error(`Unknown file kind: "${file.kind}"`);
 
       results.push({ filename: file.filename, status: 'ok', chunksStored: stored });
@@ -82,6 +84,25 @@ async function ingestAudio(userId, file) {
     type: 'audio',
     sourceFile: file.filename,
     metadata: { ...result.metadata, chunkIndex: i, totalChunks: textChunks.length },
+  }));
+
+  return storeMemories(items);
+}
+
+async function ingestDocument(userId, file) {
+  const buffer = fs.readFileSync(file.path);
+  const parser = new PDFParse({ data: buffer });
+  const result = await parser.getText();
+  await parser.destroy();
+
+  const textChunks = chunkText(result.text, 800, 100);
+
+  const items = textChunks.map((chunk, i) => ({
+    userId,
+    content: chunk,
+    type: 'text',
+    sourceFile: file.filename,
+    metadata: { chunkIndex: i, totalChunks: textChunks.length },
   }));
 
   return storeMemories(items);

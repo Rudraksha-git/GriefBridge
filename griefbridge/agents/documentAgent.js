@@ -86,6 +86,8 @@ ${JSON.stringify(templateManifest, null, 2)}
 User profile details:
 - Name: ${user.firstName || ""} ${user.lastName || ""}
 - Email: ${user.email}
+- Deceased Name: ${user.deceasedName || "Ramesh Kumar"}
+- Relationship to Deceased: ${user.relationship || "Son"}
 
 Associated Task:
 - Title: ${task.title}
