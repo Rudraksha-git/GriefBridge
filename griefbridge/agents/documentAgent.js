@@ -24,6 +24,10 @@ export async function runDocumentAgent(userId, taskId, documentType = null, addi
     throw new Error(`User or Task not found for ID: user=${userId}, task=${taskId}`);
   }
 
+  if (task.userId !== userId) {
+    throw new Error(`Unauthorized access: Task ${taskId} does not belong to user ${userId}`);
+  }
+
   // 2. Format context for Claude
   const memoriesContext = user.memories.map(m => `[Memory - Type: ${m.type}]: ${m.content}`).join("\n");
   
@@ -49,6 +53,26 @@ export async function runDocumentAgent(userId, taskId, documentType = null, addi
     aadhaar: {
       description: "Deactivation or demise update request to Unique Identification Authority of India (UIDAI).",
       requiredFields: ["uidaiOfficeName", "uidaiOfficeAddress", "aadhaarNumber", "deceasedName", "deceasedDob", "deceasedAddress", "dateOfDeath", "deathCertificateNo", "claimantName", "relationship", "claimantPhone", "claimantAddress", "currentDate"]
+    },
+    property_mutation: {
+      description: "Request for updating property ownership records/land registry after demise.",
+      requiredFields: ["revenueOfficeName", "revenueOfficeAddress", "propertyAddress", "propertyRegistrationNo", "deceasedName", "dateOfDeath", "claimantName", "relationship", "deathCertificateNo", "claimantPhone", "currentDate"]
+    },
+    digital_account: {
+      description: "Request for closure, deactivation, or memorialization of online digital accounts.",
+      requiredFields: ["platformName", "accountEmail", "deceasedName", "dateOfDeath", "claimantName", "relationship", "deathCertificateNo", "claimantPhone", "currentDate"]
+    },
+    pension: {
+      description: "Request for pension discontinuation or family pension transition.",
+      requiredFields: ["pensionAuthorityName", "pensionAuthorityAddress", "ppoNumber", "deceasedName", "dateOfDeath", "claimantName", "relationship", "claimantBankName", "claimantAccountNumber", "claimantIfsc", "claimantPhone", "deathCertificateNo", "currentDate"]
+    },
+    utility: {
+      description: "Request for transfer or disconnection of utility services (gas, electricity, water, phone).",
+      requiredFields: ["utilityName", "utilityAddress", "connectionNumber", "deceasedName", "dateOfDeath", "claimantName", "relationship", "deathCertificateNo", "claimantPhone", "currentDate"]
+    },
+    employer: {
+      description: "Notification of demise to employer and claim for final settlement/gratuity.",
+      requiredFields: ["employerName", "employerAddress", "employeeId", "deceasedName", "dateOfDeath", "claimantName", "relationship", "claimantBankName", "claimantAccountNumber", "claimantIfsc", "claimantPhone", "deathCertificateNo", "currentDate"]
     }
   };
 
@@ -81,11 +105,16 @@ If the task refers to claiming life insurance, use "insurance_claim".
 If the task refers to legal heirs or survival certificate, use "legal_heir".
 If the task refers to PF or EPF, use "epf".
 If the task refers to Aadhaar card update or cancel, use "aadhaar".
+If the task refers to property mutation, land registry update, use "property_mutation".
+If the task refers to digital subscriptions, Netflix, Spotify, or email account closure, use "digital_account".
+If the task refers to pension transfer or pension discontinuation, use "pension".
+If the task refers to electricity, water, gas, broadband or mobile connection transfer or termination, use "utility".
+If the task refers to employer, salary dues, final settlement or gratuity, use "employer".
 
 If there is no direct fit, choose the closest template.
 
 For the JSON output:
-1. Provide "template" field containing one of: "bank_closure", "insurance_claim", "legal_heir", "epf", "aadhaar".
+1. Provide "template" field containing one of: "bank_closure", "insurance_claim", "legal_heir", "epf", "aadhaar", "property_mutation", "digital_account", "pension", "utility", "employer".
 2. Provide a "fields" field containing key-value pairs matching all the required fields of that template.
 3. If some details are missing from the context, infer them if possible or create a descriptive placeholder in brackets like "[Enter Claimant IFSC here]" or "[Provide Policy Number]".
 4. Return ONLY valid JSON, no other text or explanation.`;
@@ -107,6 +136,16 @@ For the JSON output:
         selectedTemplate = "legal_heir";
       } else if (titleLower.includes("epf") || titleLower.includes("pf")) {
         selectedTemplate = "epf";
+      } else if (titleLower.includes("mutation") || titleLower.includes("property")) {
+        selectedTemplate = "property_mutation";
+      } else if (titleLower.includes("netflix") || titleLower.includes("spotify") || titleLower.includes("digital") || titleLower.includes("facebook")) {
+        selectedTemplate = "digital_account";
+      } else if (titleLower.includes("pension")) {
+        selectedTemplate = "pension";
+      } else if (titleLower.includes("electricity") || titleLower.includes("utility") || titleLower.includes("water") || titleLower.includes("gas") || titleLower.includes("airtel")) {
+        selectedTemplate = "utility";
+      } else if (titleLower.includes("employer") || titleLower.includes("company") || titleLower.includes("tcs")) {
+        selectedTemplate = "employer";
       } else {
         selectedTemplate = "bank_closure";
       }
@@ -141,6 +180,19 @@ For the JSON output:
       uidaiOfficeAddress: "Sector 17, Chandigarh",
       revenueOfficeName: "Tahsildar Revenue Office",
       revenueOfficeAddress: "Chandigarh Admin Sector 9",
+      propertyAddress: "House 102, Sector 15-A, Chandigarh",
+      propertyRegistrationNo: "REG-PROP-49201",
+      platformName: "Netflix",
+      accountEmail: "ramesh.kumar1954@gmail.com",
+      pensionAuthorityName: "Central Pension Accounting Office",
+      pensionAuthorityAddress: "Trikoot-II, Bhikaji Cama Place, New Delhi",
+      ppoNumber: "PPO-7890123-CHD",
+      utilityName: "Electricity Department Chandigarh",
+      utilityAddress: "Deluxe Building, Sector 9, Chandigarh",
+      connectionNumber: "ELEC-CHD-94921",
+      employerName: "Tata Consultancy Services (TCS)",
+      employerAddress: "TCS Sahyadri Park, Hinjawadi Phase 3, Pune",
+      employeeId: "EMP-TCS-889102",
       legalHeirs: [
         { name: "Savitri Devi", age: "68", relationship: "Wife", occupation: "Homemaker" },
         { name: "Amit Kumar", age: "40", relationship: "Son", occupation: "Software Engineer" }

@@ -1,0 +1,354 @@
+[
+  {
+    "id": "sbi",
+    "name": "State Bank of India",
+    "type": "bank",
+    "contactDetails": {
+      "address": "Sector 17-B Local Head Office, Chandigarh, 160017",
+      "email": "customercare@sbi.co.in",
+      "phone": "1800-11-2211",
+      "website": "https://sbi.co.in"
+    }
+  },
+  {
+    "id": "hdfc",
+    "name": "HDFC Bank",
+    "type": "bank",
+    "contactDetails": {
+      "address": "Plot No 28, Industrial Area Phase I, Chandigarh, 160002",
+      "email": "support@hdfcbank.com",
+      "phone": "1800-22-4332",
+      "website": "https://hdfcbank.com"
+    }
+  },
+  {
+    "id": "icici",
+    "name": "ICICI Bank",
+    "type": "bank",
+    "contactDetails": {
+      "address": "SCO 120-122, Sector 17-C, Chandigarh, 160017",
+      "email": "customer.care@icicibank.com",
+      "phone": "1800-103-8181",
+      "website": "https://icicibank.com"
+    }
+  },
+  {
+    "id": "pnb",
+    "name": "Punjab National Bank",
+    "type": "bank",
+    "contactDetails": {
+      "address": "Sector 17-B, Chandigarh, 160017",
+      "email": "care@pnb.co.in",
+      "phone": "1800-180-2222",
+      "website": "https://pnbindia.in"
+    }
+  },
+  {
+    "id": "axis",
+    "name": "Axis Bank",
+    "type": "bank",
+    "contactDetails": {
+      "address": "SCO 343-344, Sector 35-B, Chandigarh, 160035",
+      "email": "pension.care@axisbank.com",
+      "phone": "1860-419-5555",
+      "website": "https://axisbank.com"
+    }
+  },
+  {
+    "id": "bob",
+    "name": "Bank of Baroda",
+    "type": "bank",
+    "contactDetails": {
+      "address": "SCO 62-63, Sector 17-B, Chandigarh, 160017",
+      "email": "cs.ho@bankofbaroda.com",
+      "phone": "1800-258-4455",
+      "website": "https://bankofbaroda.in"
+    }
+  },
+  {
+    "id": "canara",
+    "name": "Canara Bank",
+    "type": "bank",
+    "contactDetails": {
+      "address": "Plot No 1, Sector 34-A, Chandigarh, 160022",
+      "email": "hodoc@canarabank.com",
+      "phone": "1800-425-0018",
+      "website": "https://canarabank.com"
+    }
+  },
+  {
+    "id": "union_bank",
+    "name": "Union Bank of India",
+    "type": "bank",
+    "contactDetails": {
+      "address": "SCO 64-65, Sector 17-B, Chandigarh, 160017",
+      "email": "customercare@unionbankofindia.bank",
+      "phone": "1800-22-2244",
+      "website": "https://unionbankofindia.co.in"
+    }
+  },
+  {
+    "id": "lic",
+    "name": "Life Insurance Corporation of India (LIC)",
+    "type": "insurance",
+    "contactDetails": {
+      "address": "Jeevan Prakash, Sector 17-B, Chandigarh, 160017",
+      "email": "claims.chandigarh@licindia.com",
+      "phone": "0172-2704201",
+      "website": "https://licindia.in"
+    }
+  },
+  {
+    "id": "hdfc_life",
+    "name": "HDFC Life Insurance",
+    "type": "insurance",
+    "contactDetails": {
+      "address": "SCO 240, Sector 44-C, Chandigarh, 160044",
+      "email": "service@hdfclife.com",
+      "phone": "1860-267-9999",
+      "website": "https://hdfclife.com"
+    }
+  },
+  {
+    "id": "icici_pru",
+    "name": "ICICI Prudential Life Insurance",
+    "type": "insurance",
+    "contactDetails": {
+      "address": "SCO 134-135, Sector 9-C, Chandigarh, 160009",
+      "email": "claims@iciciprulife.com",
+      "phone": "1860-266-7766",
+      "website": "https://iciciprulife.com"
+    }
+  },
+  {
+    "id": "max_life",
+    "name": "Max Life Insurance",
+    "type": "insurance",
+    "contactDetails": {
+      "address": "SCO 11-12, Sector 8-C, Madhya Marg, Chandigarh, 160008",
+      "email": "claims.support@maxlifeinsurance.com",
+      "phone": "1860-120-5577",
+      "website": "https://maxlifeinsurance.com"
+    }
+  },
+  {
+    "id": "sbi_life",
+    "name": "SBI Life Insurance",
+    "type": "insurance",
+    "contactDetails": {
+      "address": "SCO 109-110, Sector 17-C, Chandigarh, 160017",
+      "email": "claims@sbilife.co.in",
+      "phone": "1800-267-9090",
+      "website": "https://sbilife.co.in"
+    }
+  },
+  {
+    "id": "uidai",
+    "name": "UIDAI Regional Office Chandigarh",
+    "type": "government",
+    "contactDetails": {
+      "address": "SCO 139-141, Sector 17-C, Chandigarh, 160017",
+      "email": "helpdesk.uidai@uidai.net.in",
+      "phone": "1947",
+      "website": "https://uidai.gov.in"
+    }
+  },
+  {
+    "id": "income_tax",
+    "name": "Income Tax Department (Aaykar Bhawan)",
+    "type": "government",
+    "contactDetails": {
+      "address": "Sector 17-E, Chandigarh, 160017",
+      "email": "ask@incometax.gov.in",
+      "phone": "1800-180-1961",
+      "website": "https://incometax.gov.in"
+    }
+  },
+  {
+    "id": "epfo",
+    "name": "Employees' Provident Fund Organisation (EPFO)",
+    "type": "government",
+    "contactDetails": {
+      "address": "Regional Office, SCO 4-7, Sector 17-D, Chandigarh, 160017",
+      "email": "ro.chandigarh@epfindia.gov.in",
+      "phone": "1800-113-200",
+      "website": "https://epfindia.gov.in"
+    }
+  },
+  {
+    "id": "passport_office",
+    "name": "Regional Passport Office Chandigarh",
+    "type": "government",
+    "contactDetails": {
+      "address": "SCO 28-32, Sector 34-A, Chandigarh, 160022",
+      "email": "rpo.chandigarh@mea.gov.in",
+      "phone": "1800-258-1800",
+      "website": "https://passportindia.gov.in"
+    }
+  },
+  {
+    "id": "mc_chandigarh",
+    "name": "Municipal Corporation Chandigarh (Birth & Death Registrar)",
+    "type": "government",
+    "contactDetails": {
+      "address": "New Deluxe Building, Sector 17, Chandigarh, 160017",
+      "email": "mcchandigarh@chd.nic.in",
+      "phone": "0172-2708765",
+      "website": "https://mcchandigarh.gov.in"
+    }
+  },
+  {
+    "id": "tehsildar_office",
+    "name": "Tahsildar Revenue Office (Property Mutation)",
+    "type": "government",
+    "contactDetails": {
+      "address": "Estate Office, Sector 9-D, Chandigarh, 160009",
+      "email": "estateoffice-chd@nic.in",
+      "phone": "0172-2740015",
+      "website": "https://chdestateoffice.gov.in"
+    }
+  },
+  {
+    "id": "electricity_chd",
+    "name": "Electricity Department Chandigarh",
+    "type": "utility",
+    "contactDetails": {
+      "address": "Deluxe Building, Sector 9, Chandigarh, 160009",
+      "email": "seopc-chd@nic.in",
+      "phone": "0172-4632426",
+      "website": "https://chdelectricity.gov.in"
+    }
+  },
+  {
+    "id": "water_chd",
+    "name": "Municipal Corporation Water Supply Department",
+    "type": "utility",
+    "contactDetails": {
+      "address": "Sector 17, Municipal Corporation, Chandigarh, 160017",
+      "email": "water-mcc@chd.nic.in",
+      "phone": "0172-2780165",
+      "website": "https://mcchandigarh.gov.in"
+    }
+  },
+  {
+    "id": "indane_gas",
+    "name": "Indane Gas Agency / Indian Oil",
+    "type": "utility",
+    "contactDetails": {
+      "address": "Indian Oil Corporation Ltd, Sector 19-A, Chandigarh, 160019",
+      "email": "lpgsupport@indianoil.in",
+      "phone": "1800-233-3555",
+      "website": "https://iocl.com"
+    }
+  },
+  {
+    "id": "bsnl",
+    "name": "Bharat Sanchar Nigam Limited (BSNL)",
+    "type": "utility",
+    "contactDetails": {
+      "address": "Telephone Exchange, Sector 18, Chandigarh, 160018",
+      "email": "portalhelpdesk@bsnl.co.in",
+      "phone": "1800-345-1500",
+      "website": "https://bsnl.co.in"
+    }
+  },
+  {
+    "id": "airtel",
+    "name": "Bharti Airtel Limited",
+    "type": "utility",
+    "contactDetails": {
+      "address": "Plot No 21, Rajiv Gandhi Technology Park, Chandigarh, 160101",
+      "email": "nodalofficer.pb@in.airtel.com",
+      "phone": "121",
+      "website": "https://airtel.in"
+    }
+  },
+  {
+    "id": "jio",
+    "name": "Reliance Jio Infocomm",
+    "type": "utility",
+    "contactDetails": {
+      "address": "SCO 120-122, Sector 17-C, Chandigarh, 160017",
+      "email": "jiocare@jio.com",
+      "phone": "1860-893-3333",
+      "website": "https://jio.com"
+    }
+  },
+  {
+    "id": "netflix",
+    "name": "Netflix India",
+    "type": "digital",
+    "contactDetails": {
+      "address": "Bandre Kurla Complex, Mumbai, 400051",
+      "email": "privacy-support@netflix.com",
+      "phone": "000-800-040-1843",
+      "website": "https://netflix.com"
+    }
+  },
+  {
+    "id": "spotify",
+    "name": "Spotify India",
+    "type": "digital",
+    "contactDetails": {
+      "address": "Privacy Operations, Regeringsgatan 19, Stockholm, Sweden",
+      "email": "privacy-compliance@spotify.com",
+      "phone": "1-800-SPOTIFY",
+      "website": "https://spotify.com"
+    }
+  },
+  {
+    "id": "google",
+    "name": "Google India / Alphabet",
+    "type": "digital",
+    "contactDetails": {
+      "address": "Unitech Signature Tower-II, Sector-15, Silokhera, Gurugram, 122001",
+      "email": "support-in@google.com",
+      "phone": "1800-419-0157",
+      "website": "https://google.co.in"
+    }
+  },
+  {
+    "id": "meta",
+    "name": "Meta Platforms (Facebook/Instagram)",
+    "type": "digital",
+    "contactDetails": {
+      "address": "1 Hacker Way, Menlo Park, CA, 94025, USA",
+      "email": "records@meta.com",
+      "phone": "1-650-543-4800",
+      "website": "https://meta.com"
+    }
+  },
+  {
+    "id": "amazon",
+    "name": "Amazon India",
+    "type": "digital",
+    "contactDetails": {
+      "address": "Brigade Gateway, 26/1 Dr. Rajkumar Road, Bangalore, 560055",
+      "email": "cs-reply@amazon.in",
+      "phone": "1800-3000-9009",
+      "website": "https://amazon.in"
+    }
+  },
+  {
+    "id": "tcs",
+    "name": "Tata Consultancy Services (TCS)",
+    "type": "employer",
+    "contactDetails": {
+      "address": "TCS Sahyadri Park, Hinjawadi Phase 3, Pune, 411057",
+      "email": "hr.support@tcs.com",
+      "phone": "1800-209-3111",
+      "website": "https://tcs.com"
+    }
+  },
+  {
+    "id": "infosys",
+    "name": "Infosys Limited",
+    "type": "employer",
+    "contactDetails": {
+      "address": "Electronics City, Hosur Road, Bangalore, 560100",
+      "email": "settlements.hr@infosys.com",
+      "phone": "080-2852-0261",
+      "website": "https://infosys.com"
+    }
+  }
+]
