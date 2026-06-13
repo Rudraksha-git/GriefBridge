@@ -1,5 +1,10 @@
-import { pipeline } from '@xenova/transformers';
+import { pipeline, env } from '@xenova/transformers';
 import prisma from '../lib/prisma.js';
+
+// Next.js specific configuration for @xenova/transformers
+env.allowLocalModels = true;
+env.useBrowserCache = false;
+
 
 let embedderPromise = null;
 
