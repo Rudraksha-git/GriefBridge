@@ -199,8 +199,15 @@ async function main() {
     }
   ];
 
+  const { embedText } = await import("../tools/memoryTools.js");
   for (const memory of memoriesData) {
-    await prisma.memory.create({ data: memory });
+    const embedding = await embedText(memory.content);
+    await prisma.memory.create({
+      data: {
+        ...memory,
+        embedding
+      }
+    });
   }
 
   console.log("Database seeded successfully!");

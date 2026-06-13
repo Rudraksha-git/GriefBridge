@@ -72,10 +72,10 @@ export async function storeMemories(items) {
   return count;
 }
 
-/**
- * Cosine similarity between two equal-length vectors.
- */
 function cosineSimilarity(a, b) {
+  if (!a || !b || a.length === 0 || b.length === 0 || a.length !== b.length) {
+    return 0;
+  }
   let dot = 0;
   let normA = 0;
   let normB = 0;

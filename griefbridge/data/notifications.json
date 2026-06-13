@@ -154,80 +154,80 @@
     "updatedAt": "2026-06-12T19:26:32.718Z"
   },
   {
-    "id": "notif_1781296535486_0",
-    "userId": "user_3F3GhxjL11zefOGrxxpGbvoKIns",
+    "id": "notif_1781321489197_0",
+    "userId": "user_3F44vDEJLdGuAQlUgQrd7Ng1kRg",
     "institutionId": "sbi",
     "institutionName": "State Bank of India",
     "institutionType": "bank",
     "status": "resolved",
     "letterText": "Date: June 13, 2026\n\nTo,\nThe Authorized Officer / Customer Support Team,\nState Bank of India\n\nSubject: Notification of demise of account holder and request for account status verification (Acc No: 30219488310)\n\nDear Sir/Madam,\n\nI am writing to formally notify you of the sad demise of my Father, Ramesh Kumar, who passed away on June 5, 2026. The deceased held a bank account under Account Number: 30219488310 with your institution.\n\nI request you to temporarily freeze any debits from this account to prevent unauthorized transactions, verify the registered nominee status for this account, and guide me through the balance transfer / closure process.\n\nThe official Death Certificate (No: DC-Chandigarh/2026/89481) is ready for your verification. Please let me know the official forms and documents required to initiate the claim/transfer.\n\nThank you for your assistance during this difficult time.\n\nSincerely yours,\n\n____________________________\nAmit Kumar\nRelationship: Father\nPhone: +91 98765 43210\nEmail: demo@griefbridge.com\nAddress: House 102, Sector 15-A, Chandigarh",
-    "createdAt": "2026-06-12T20:35:35.486Z",
-    "updatedAt": "2026-06-12T20:35:35.486Z"
+    "createdAt": "2026-06-13T03:31:29.197Z",
+    "updatedAt": "2026-06-13T03:31:29.197Z"
   },
   {
-    "id": "notif_1781296535486_1",
-    "userId": "user_3F3GhxjL11zefOGrxxpGbvoKIns",
+    "id": "notif_1781321489204_1",
+    "userId": "user_3F44vDEJLdGuAQlUgQrd7Ng1kRg",
     "institutionId": "lic",
     "institutionName": "Life Insurance Corporation of India (LIC)",
     "institutionType": "insurance",
     "status": "sent",
     "letterText": "Date: June 13, 2026\n\nTo,\nThe Authorized Officer / Customer Support Team,\nLife Insurance Corporation of India (LIC)\n\nSubject: Demise notification and request for claim initiation for Policy No: LIC-883012\n\nDear Sir/Madam,\n\nI am writing to notify you of the sad demise of my Father, Ramesh Kumar, who was the insured policyholder under Life Insurance Policy Number: LIC-883012. The deceased passed away on June 5, 2026.\n\nAs the nominee/beneficiary of this policy, I request you to register this claim and send me the necessary claim settlement forms and list of supporting documentation required.\n\nEnclosed/available is the Death Certificate Registration No: DC-Chandigarh/2026/89481 for registration of this notice.\n\nThank you for your assistance during this difficult time.\n\nSincerely yours,\n\n____________________________\nAmit Kumar\nRelationship: Father\nPhone: +91 98765 43210\nEmail: demo@griefbridge.com\nAddress: House 102, Sector 15-A, Chandigarh",
-    "createdAt": "2026-06-12T20:35:35.486Z",
-    "updatedAt": "2026-06-12T20:35:35.486Z"
+    "createdAt": "2026-06-13T03:31:29.204Z",
+    "updatedAt": "2026-06-13T03:31:29.204Z"
   },
   {
-    "id": "notif_1781296535487_2",
-    "userId": "user_3F3GhxjL11zefOGrxxpGbvoKIns",
+    "id": "notif_1781321489206_2",
+    "userId": "user_3F44vDEJLdGuAQlUgQrd7Ng1kRg",
     "institutionId": "uidai",
     "institutionName": "UIDAI Regional Office Chandigarh",
     "institutionType": "government",
     "status": "sent",
     "letterText": "Date: June 13, 2026\n\nTo,\nThe Authorized Officer / Customer Support Team,\nUIDAI Regional Office Chandigarh\n\nSubject: Notification of demise and request for update/cancellation of Record: 4930-1829-3810\n\nDear Sir/Madam,\n\nI am writing to notify your office of the demise of my Father, Ramesh Kumar, who passed away on June 5, 2026. The deceased held document/record number: 4930-1829-3810 under your registry.\n\nI request your office to update the status of this record to reflect the demise, or cancel/deactivate the credential to prevent misuse, as required by law.\n\nA copy of the Death Certificate (Certificate No: DC-Chandigarh/2026/89481) is provided for record verification.\n\nThank you for your assistance during this difficult time.\n\nSincerely yours,\n\n____________________________\nAmit Kumar\nRelationship: Father\nPhone: +91 98765 43210\nEmail: demo@griefbridge.com\nAddress: House 102, Sector 15-A, Chandigarh",
-    "createdAt": "2026-06-12T20:35:35.487Z",
-    "updatedAt": "2026-06-12T20:35:35.487Z"
+    "createdAt": "2026-06-13T03:31:29.206Z",
+    "updatedAt": "2026-06-13T03:31:29.206Z"
   },
   {
-    "id": "notif_1781296535487_3",
-    "userId": "user_3F3GhxjL11zefOGrxxpGbvoKIns",
+    "id": "notif_1781321489207_3",
+    "userId": "user_3F44vDEJLdGuAQlUgQrd7Ng1kRg",
     "institutionId": "tehsildar_office",
     "institutionName": "Tahsildar Revenue Office (Property Mutation)",
     "institutionType": "government",
     "status": "pending",
     "letterText": "Date: June 13, 2026\n\nTo,\nThe Authorized Officer / Customer Support Team,\nTahsildar Revenue Office (Property Mutation)\n\nSubject: Notification of demise and request for update/cancellation of Record: [Document ID]\n\nDear Sir/Madam,\n\nI am writing to notify your office of the demise of my Father, Ramesh Kumar, who passed away on June 5, 2026. The deceased held document/record number: [Document ID] under your registry.\n\nI request your office to update the status of this record to reflect the demise, or cancel/deactivate the credential to prevent misuse, as required by law.\n\nA copy of the Death Certificate (Certificate No: DC-Chandigarh/2026/89481) is provided for record verification.\n\nThank you for your assistance during this difficult time.\n\nSincerely yours,\n\n____________________________\nAmit Kumar\nRelationship: Father\nPhone: +91 98765 43210\nEmail: demo@griefbridge.com\nAddress: House 102, Sector 15-A, Chandigarh",
-    "createdAt": "2026-06-12T20:35:35.487Z",
-    "updatedAt": "2026-06-12T20:35:35.487Z"
+    "createdAt": "2026-06-13T03:31:29.207Z",
+    "updatedAt": "2026-06-13T03:31:29.207Z"
   },
   {
-    "id": "notif_1781296535487_4",
-    "userId": "user_3F3GhxjL11zefOGrxxpGbvoKIns",
+    "id": "notif_1781321489209_4",
+    "userId": "user_3F44vDEJLdGuAQlUgQrd7Ng1kRg",
     "institutionId": "epfo",
     "institutionName": "Employees' Provident Fund Organisation (EPFO)",
     "institutionType": "government",
     "status": "pending",
     "letterText": "Date: June 13, 2026\n\nTo,\nThe Authorized Officer / Customer Support Team,\nEmployees' Provident Fund Organisation (EPFO)\n\nSubject: Notification of demise and request for update/cancellation of Record: EPF-MEMBER-99120\n\nDear Sir/Madam,\n\nI am writing to notify your office of the demise of my Father, Ramesh Kumar, who passed away on June 5, 2026. The deceased held document/record number: EPF-MEMBER-99120 under your registry.\n\nI request your office to update the status of this record to reflect the demise, or cancel/deactivate the credential to prevent misuse, as required by law.\n\nA copy of the Death Certificate (Certificate No: DC-Chandigarh/2026/89481) is provided for record verification.\n\nThank you for your assistance during this difficult time.\n\nSincerely yours,\n\n____________________________\nAmit Kumar\nRelationship: Father\nPhone: +91 98765 43210\nEmail: demo@griefbridge.com\nAddress: House 102, Sector 15-A, Chandigarh",
-    "createdAt": "2026-06-12T20:35:35.487Z",
-    "updatedAt": "2026-06-12T20:35:35.487Z"
+    "createdAt": "2026-06-13T03:31:29.209Z",
+    "updatedAt": "2026-06-13T03:31:29.209Z"
   },
   {
-    "id": "notif_1781296535488_5",
-    "userId": "user_3F3GhxjL11zefOGrxxpGbvoKIns",
+    "id": "notif_1781321489212_5",
+    "userId": "user_3F44vDEJLdGuAQlUgQrd7Ng1kRg",
     "institutionId": "netflix",
     "institutionName": "Netflix India",
     "institutionType": "digital",
     "status": "resolved",
     "letterText": "Date: June 13, 2026\n\nTo,\nThe Authorized Officer / Customer Support Team,\nNetflix India\n\nSubject: Demise notification and account closure request for account: ramesh.kumar1954@gmail.com\n\nDear Support Team,\n\nI am writing to notify you of the demise of my Father, Ramesh Kumar, who passed away on June 5, 2026. The deceased held an account on your platform registered under the email address: ramesh.kumar1954@gmail.com.\n\nAs the family representative, I request you to deactivate, delete, or memorialize this account, and cancel any recurring subscriptions or payments associated with it.\n\nAttached is the official Death Certificate (Certificate No: DC-Chandigarh/2026/89481) for verification of this request.\n\nThank you for your assistance during this difficult time.\n\nSincerely yours,\n\n____________________________\nAmit Kumar\nRelationship: Father\nPhone: +91 98765 43210\nEmail: demo@griefbridge.com\nAddress: House 102, Sector 15-A, Chandigarh",
-    "createdAt": "2026-06-12T20:35:35.488Z",
-    "updatedAt": "2026-06-12T20:35:35.488Z"
+    "createdAt": "2026-06-13T03:31:29.212Z",
+    "updatedAt": "2026-06-13T03:31:29.212Z"
   },
   {
-    "id": "notif_1781296535488_6",
-    "userId": "user_3F3GhxjL11zefOGrxxpGbvoKIns",
+    "id": "notif_1781321489215_6",
+    "userId": "user_3F44vDEJLdGuAQlUgQrd7Ng1kRg",
     "institutionId": "electricity_chd",
     "institutionName": "Electricity Department Chandigarh",
     "institutionType": "utility",
     "status": "pending",
     "letterText": "Date: June 13, 2026\n\nTo,\nThe Authorized Officer / Customer Support Team,\nElectricity Department Chandigarh\n\nSubject: Request for transfer / disconnection of Utility connection (No: ELEC-CHD-94921)\n\nDear Sir/Madam,\n\nI am writing to notify you of the demise of my Father, Ramesh Kumar, who was the registered consumer for connection number ELEC-CHD-94921. The deceased passed away on June 5, 2026.\n\nI request you to update your billing records and transfer this service connection to my name. I will clear any pending dues and complete the necessary transfer formalities.\n\nThe Death Certificate No: DC-Chandigarh/2026/89481 is attached for verification.\n\nThank you for your assistance during this difficult time.\n\nSincerely yours,\n\n____________________________\nAmit Kumar\nRelationship: Father\nPhone: +91 98765 43210\nEmail: demo@griefbridge.com\nAddress: House 102, Sector 15-A, Chandigarh",
-    "createdAt": "2026-06-12T20:35:35.488Z",
-    "updatedAt": "2026-06-12T20:35:35.488Z"
+    "createdAt": "2026-06-13T03:31:29.215Z",
+    "updatedAt": "2026-06-13T03:31:29.215Z"
   }
 ]

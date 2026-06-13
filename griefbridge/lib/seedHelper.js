@@ -171,9 +171,15 @@ export async function ensureUserAndSeed(userId) {
       }
     ];
 
-    // Note: since they are default seeded, we let embedding remain empty until they run ingestion
+    const { embedText } = await import("../tools/memoryTools.js");
     for (const memory of memoriesData) {
-      await prisma.memory.create({ data: memory });
+      const embedding = await embedText(memory.content);
+      await prisma.memory.create({
+        data: {
+          ...memory,
+          embedding
+        }
+      });
     }
 
     console.log(`[AUTH SEED] Seeding completed for user ${userId}!`);

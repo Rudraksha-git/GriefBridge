@@ -80,21 +80,21 @@ export default function MemoryGraph({ graphNodes = [], graphEdges = [] }) {
   const getNodeContext = (node) => {
     switch (node.id) {
       case "ramesh":
-        return "Ramesh Kumar (1954 - 2026). Resided at Sector 15 Chandigarh. Deceased June 5, 2026.";
+        return `${node.label} (1954 - 2026). Resided at Sector 15 Chandigarh. Deceased June 5, 2026.`;
       case "savitri":
-        return "Savitri Devi (Wife). Nominee for HDFC/SBI bank balance transfers.";
+        return `${node.label} (Wife). Nominee for HDFC/SBI bank balance transfers.`;
       case "amit":
-        return "Amit Kumar (Son). Claimant for LIC Policy claims and executor assistant.";
+        return `${node.label}. Claimant and executor assistant.`;
       case "sbi":
         return "SBI Savings Account (30219488310). Balance transfer queued to Savitri Devi.";
       case "lic":
-        return "LIC Policy (LIC-883012). Claim amount designated for executor Amit Kumar.";
+        return "LIC Policy (LIC-883012). Claim amount designated for the claimant.";
       case "aadhaar":
         return "Aadhaar Card (4930-1829-3810). Demise deactivation filed to UIDAI.";
       case "property":
         return "Sector 15 Chandigarh House. Mutation transfer processing at Revenue Office.";
       case "recipe":
-        return "Lasagna & Gajar Halwa recipes parsed from Ramesh's voice notes.";
+        return "Lasagna & Gajar Halwa recipes parsed from estate voice notes.";
       case "business":
         return "Business advice and 1987 printing shop closure logs preserved in transcripts.";
       case "lahore":
@@ -104,7 +104,7 @@ export default function MemoryGraph({ graphNodes = [], graphEdges = [] }) {
       case "utilities":
         return "Electricity/Airtel bills processing next of kin transitions.";
       default:
-        return `${node.label} entity connected to Ramesh's estate memories.`;
+        return `${node.label} entity connected to the estate memories.`;
     }
   };
 

@@ -34,6 +34,7 @@ export async function POST(request) {
     });
 
     // Update seeded memories to reflect the user's custom details
+    const { embedText } = await import("../../../../tools/memoryTools.js");
     const memories = await prisma.memory.findMany({ where: { userId } });
     for (const mem of memories) {
       let content = mem.content;
@@ -44,9 +45,14 @@ export async function POST(request) {
       content = content.replace(/\bAmit\b/g, user.firstName || "Amit");
       content = content.replace(new RegExp(oldRelationship, "gi"), relationship);
 
+      const embedding = await embedText(content);
+
       await prisma.memory.update({
         where: { id: mem.id },
-        data: { content }
+        data: { 
+          content,
+          embedding
+        }
       });
     }
 

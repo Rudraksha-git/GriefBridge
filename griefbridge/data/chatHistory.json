@@ -64,6 +64,47 @@
       "content": "I don't have any memories that speak to this directly. Try asking about a specific topic, person, or time period that might be reflected in the chats, photos, or voice notes you've uploaded.",
       "source": null,
       "timestamp": "01:41 am"
+    },
+    {
+      "id": "msg_user_1781295492612",
+      "role": "user",
+      "content": "reciper from sample_memory",
+      "timestamp": "01:48 am"
+    },
+    {
+      "id": "msg_agent_1781295492612",
+      "role": "agent",
+      "content": "I don't have any memories that speak to this directly. Try asking about a specific topic, person, or time period that might be reflected in the chats, photos, or voice notes you've uploaded.",
+      "source": null,
+      "timestamp": "01:48 am"
+    },
+    {
+      "id": "msg_user_1781295533071",
+      "role": "user",
+      "content": "Family recipes",
+      "timestamp": "01:48 am"
+    },
+    {
+      "id": "msg_agent_1781295533071",
+      "role": "agent",
+      "content": "I don't have any memories that speak to this directly. Try asking about a specific topic, person, or time period that might be reflected in the chats, photos, or voice notes you've uploaded.",
+      "source": null,
+      "timestamp": "01:48 am"
+    }
+  ],
+  "user_3F44vDEJLdGuAQlUgQrd7Ng1kRg": [
+    {
+      "id": "msg_user_1781321339946",
+      "role": "user",
+      "content": "Gajar ka halwa recipe",
+      "timestamp": "08:58 am"
+    },
+    {
+      "id": "msg_agent_1781321339946",
+      "role": "agent",
+      "content": "Based on Robert's archived memory from \"sample_memory.pdf\":\n\n\"tbacks\nHis primary career advice to his son, Amit, was: \"Every setback in business is a setup for a comeback,\nprovided you have the honesty to inspect what went wrong and the patience to start again.\" He shared\nthis first during the printing shop crisis in Sector 15 Chandigarh in 1987, when paper costs surged and\nthey nearly lost the family press. He believed that integrity with suppliers and transparency with clients\nwere the only long-term values that mattered in professional life.\n3. Nani's Traditional Gajar ka Halwa Recipe\nRamesh was fond of cooking traditional family desserts. He preserved Dadi and Nani's exact recipe for\nwinter Gajar ka Halwa:\n• Ingredients: 1 kg red carrots (finely grated), 1.5 liters full-fat organic milk, 200g sugar, 4 tbsp pure\nghee, and 50g mixed chopped almonds\"\n\n(Note: Legacy companion running in offline context)",
+      "source": "Document · sample_memory.pdf",
+      "timestamp": "08:58 am"
     }
   ]
 }

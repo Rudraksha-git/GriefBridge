@@ -35,6 +35,9 @@ export default function LegacyPortal() {
       const res = await fetch("/api/memory/status");
       const data = await res.json();
       setStats(data);
+      if (data.featured) {
+        setFeaturedMemory(data.featured);
+      }
     } catch (err) {
       console.error("Error fetching memory stats:", err);
     }
@@ -58,16 +61,7 @@ export default function LegacyPortal() {
     loadAll();
   }, []);
 
-  // Update featured memory dynamically if memories are loaded
-  useEffect(() => {
-    if (graphData.nodes?.length > 3) {
-      setFeaturedMemory({
-        label: "Primary Legacy Insight",
-        excerpt: "State Bank of India account balance is designated for Savitri Devi. LIC insurance claims are routed to Amit Kumar.",
-        source: "Financial & Legal Records"
-      });
-    }
-  }, [graphData]);
+
 
   const handleFileChange = (e) => {
     if (e.target.files) {
