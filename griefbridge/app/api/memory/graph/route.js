@@ -10,16 +10,24 @@ export async function GET(request) {
       where: { userId }
     });
 
+    const user = await prisma.user.findUnique({
+      where: { id: userId }
+    });
+
+    const deceasedName = user?.deceasedName || "Ramesh Kumar";
+    const claimantName = user ? `${user.firstName || "Amit"} ${user.lastName || "Kumar"}`.trim() : "Amit Kumar";
+    const relationship = user?.relationship || "Son";
+
     // Central core nodes
     const nodes = [
-      { id: "ramesh", label: "Ramesh Kumar", type: "deceased", size: 25, val: 30 },
+      { id: "ramesh", label: deceasedName, type: "deceased", size: 25, val: 30 },
       { id: "savitri", label: "Savitri Devi", type: "family", size: 18, val: 18 },
-      { id: "amit", label: "Amit Kumar", type: "family", size: 18, val: 18 }
+      { id: "amit", label: claimantName, type: "family", size: 18, val: 18 }
     ];
 
     const edges = [
       { source: "savitri", target: "ramesh", label: "Wife" },
-      { source: "amit", target: "ramesh", label: "Son" }
+      { source: "amit", target: "ramesh", label: relationship }
     ];
 
     // Helper to check if node exists

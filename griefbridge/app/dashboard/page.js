@@ -42,13 +42,17 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchTasks();
-
-    const timer = setTimeout(() => {
-      const header = document.getElementById('dashboard-header');
-      if (header) header.classList.add('in-view');
-    }, 100);
-    return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      const timer = setTimeout(() => {
+        const header = document.getElementById('dashboard-header');
+        if (header) header.classList.add('in-view');
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
 
   useEffect(() => {
     const rows = document.querySelectorAll('.task-row');
